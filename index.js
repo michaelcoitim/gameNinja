@@ -13,6 +13,20 @@ class Sprite {
 
     }
 
+    draw(){
+        c.fillStyle='red'
+        c.fillRect(this.position.x, this.position.y, 50, 150)
+    }
+
 }
 
-const jogador = new Sprite()
+const jogador = new Sprite({
+    x:0,
+    y:0
+})
+
+jogador.draw()
+
+// crinado inimigo
+
+console.log(jogador)
