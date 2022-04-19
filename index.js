@@ -29,4 +29,11 @@ jogador.draw()
 
 // crinado inimigo
 
+const inimigo = new Sprite({
+    x:400,
+    y:100,
+})
+
+inimigo.draw()
+
 console.log(jogador)
