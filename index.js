@@ -60,7 +60,8 @@ const inimigo = new Sprite({
 
 function animete(){
     window.requestAnimationFrame(animete)
-
+    c.fillStyle='black'
+    c.fillRect(0, 0, canvas.width , canvas.height)
     jogador.update()
     inimigo.update()
 }
