@@ -8,32 +8,63 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 //criando jogador e inimigo 
 class Sprite {
-    constructor(position){
+    constructor({position, velocity}){
         this.position =position
+        this.velocity =velocity
 
     }
-
+    // desenha
     draw(){
         c.fillStyle='red'
         c.fillRect(this.position.x, this.position.y, 50, 150)
+    }
+    //atualiza desenho 
+    update(){
+        this.draw()
+        this.position.y += 10
     }
 
 }
 
 const jogador = new Sprite({
-    x:0,
-    y:0
+    position: {
+        x: 0,
+        y: 0
+    },
+    velocity:{
+        x: 0,
+        y: 0
+
+    }
 })
 
-jogador.draw()
+
 
 // crinado inimigo
 
 const inimigo = new Sprite({
-    x:400,
-    y:100,
+    position: {
+        x: 400,
+        y: 100
+    },
+    velocity:{
+        x: 0,
+        y: 0
+
+    }
 })
 
-inimigo.draw()
+
+
+//loop animação 
+
+function animete(){
+    window.requestAnimationFrame(animete)
+
+    jogador.update()
+    inimigo.update()
+}
+
+animete()
 
 console.log(jogador)
