@@ -65,7 +65,7 @@ const inimigo = new Sprite({
     }
 })
 
-
+//console.log(jogador)
 
 //loop animação 
 
@@ -78,5 +78,7 @@ function animete(){
 }
 
 animete()
-
-console.log(jogador)
+// crinado eventos
+window.addEventListener('keydown', (event) => {
+    console.log(event)
+})
