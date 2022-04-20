@@ -6,7 +6,10 @@ canvas.height=514;
 
 c.fillRect(0, 0, canvas.width, canvas.height);
 
+
 //criando jogador e inimigo 
+
+const gravity= 0.2
 class Sprite {
     constructor({position, velocity}){
         this.position =position
@@ -22,6 +25,7 @@ class Sprite {
     //atualiza desenho 
     update(){
         this.draw()
+        this.velocity.y += gravity
         this.position.y += this.velocity.y
 
         if(this.position.y + this.height +this.velocity.y >= canvas.height){
@@ -38,7 +42,7 @@ const jogador = new Sprite({
     },
     velocity:{
         x: 0,
-        y: 10
+        y: 0
 
     }
 })
