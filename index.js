@@ -78,7 +78,8 @@ function animete(){
 }
 
 animete()
-// crinado eventos
+
+// crinado eventos (função que "lê" o teclado)
 window.addEventListener('keydown', (event) => {
-    console.log(event)
+    console.log(event.key)
 })
