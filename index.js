@@ -25,7 +25,7 @@ class Sprite {
     //atualiza desenho 
     update(){
         this.draw()
-        
+        this.position.x += this.velocity.x
         this.position.y += this.velocity.y
 
         if(this.position.y + this.height +this.velocity.y >= canvas.height){
@@ -81,5 +81,10 @@ animete()
 
 // crinado eventos (função que "lê" o teclado)
 window.addEventListener('keydown', (event) => {
+    switch(event.key){
+        case 'd':
+            jogador.velocity.x =1
+        break
+    }
     console.log(event.key)
 })
