@@ -79,11 +79,20 @@ function animete(){
 
 animete()
 
-// crinado eventos (função que "lê" o teclado)
+// crinado eventos (função que "lê" o teclado quando preciona a tecla)
 window.addEventListener('keydown', (event) => {
     switch(event.key){
         case 'd':
             jogador.velocity.x =1
+        break
+    }
+    console.log(event.key)
+})
+// quando "solta" a tecla 
+window.addEventListener('keyup', (event) => {
+    switch(event.key){
+        case 'd':
+            jogador.velocity.x = 0
         break
     }
     console.log(event.key)
