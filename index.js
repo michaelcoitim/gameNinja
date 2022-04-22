@@ -15,6 +15,7 @@ class Sprite {
         this.position =position
         this.velocity =velocity
         this.height =150
+        this.lastKey
 
     }
     // desenha
@@ -66,7 +67,7 @@ const inimigo = new Sprite({
 
 //console.log(jogador)
 
-// criado para ajudar na animação mais fluida
+// criado para ajudar na animação mais fluida-"mapa de teclas" especificações iniciais 
 const keys = {
     a: {
         pressed: false
@@ -74,7 +75,10 @@ const keys = {
     d: {
         pressed: false
     },
-    w: {
+    ArrowRight: {
+        pressed: false
+    },
+    ArrowLeft: {
         pressed: false
     }
 }
@@ -90,8 +94,9 @@ function animete(){
     inimigo.update()
 
     jogador.velocity.x=0
+    inimigo.velocity.x =0
 
-    //criado para ajudar na animação mais fluida    
+    //movimentos jogador   
     if(keys.a.pressed && lastKey ==='a'){
         jogador.velocity.x = -1
 
@@ -99,12 +104,22 @@ function animete(){
         jogador.velocity.x = 1
 
     }
+
+        //movimentos inimigo   
+        if(keys.ArrowLeft.pressed && inimigo.lastKey ==='ArrowLeft'){
+            inimigo.velocity.x = -1
+    
+        }else if(keys.ArrowRight.pressed && inimigo.lastKey==='ArrowRight'){
+            inimigo.velocity.x = 1
+    
+        }
 }
 
 animete()
 
 // crinado eventos (função que "lê" o teclado quando preciona a tecla)
 window.addEventListener('keydown', (event) => {
+    // botoes jogador
     switch(event.key){
         case 'd':// move para frente
             keys.d.pressed = true
@@ -118,10 +133,25 @@ window.addEventListener('keydown', (event) => {
             jogador.velocity.y = -10
         break
     }
+    // botoes do inimigo 
+    switch(event.key){
+        case 'ArrowRight':// move para frente
+            keys.ArrowRight.pressed = true
+            inimigo.lastKey= 'ArrowRight'
+        break
+        case 'ArrowLeft': //move para traz
+            keys.ArrowLeft.pressed = true
+            inimigo.lastKey ='ArrowLeft'
+        break
+        case 'ArrowUp': //pular 
+            inimigo.velocity.y = -10
+        break
+    }
     console.log(event.key)
 })
 // quando "solta" a tecla 
 window.addEventListener('keyup', (event) => {
+    // botoes jogador
     switch(event.key){
         case 'd': // para de mover frente
             keys.d.pressed = false
@@ -129,9 +159,17 @@ window.addEventListener('keyup', (event) => {
         case 'a': // para de mover traz 
             keys.a.pressed = false
         break
-        case 'w': 
-        keys.w.pressed = false
-    break
+
+    }
+    // botoes do inimigo
+    switch(event.key){
+        case 'ArrowRight': // para de mover frente
+            keys.ArrowRight.pressed = false
+        break
+        case 'ArrowLeft': // para de mover traz 
+            keys.ArrowLeft.pressed = false
+        break
+
     }
     console.log(event.key)
 })
