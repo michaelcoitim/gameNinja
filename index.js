@@ -73,8 +73,13 @@ const keys = {
     },
     d: {
         pressed: false
+    },
+    w: {
+        pressed: false
     }
 }
+
+let lastKey
 
 //loop animação 
 function animete(){
@@ -84,11 +89,13 @@ function animete(){
     jogador.update()
     inimigo.update()
 
+    jogador.velocity.x=0
+
     //criado para ajudar na animação mais fluida    
-    if(keys.a.pressed){
+    if(keys.a.pressed && lastKey ==='a'){
         jogador.velocity.x = -1
 
-    }else if(keys.d.pressed){
+    }else if(keys.d.pressed && lastKey==='d'){
         jogador.velocity.x = 1
 
     }
@@ -101,9 +108,14 @@ window.addEventListener('keydown', (event) => {
     switch(event.key){
         case 'd':// move para frente
             keys.d.pressed = true
+            lastKey= 'd'
         break
         case 'a': //move para traz
             keys.a.pressed = true
+            lastKey ='a'
+        break
+        case 'w': //pular 
+            jogador.velocity.y = -10
         break
     }
     console.log(event.key)
@@ -117,6 +129,9 @@ window.addEventListener('keyup', (event) => {
         case 'a': // para de mover traz 
             keys.a.pressed = false
         break
+        case 'w': 
+        keys.w.pressed = false
+    break
     }
     console.log(event.key)
 })
