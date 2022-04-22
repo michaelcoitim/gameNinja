@@ -52,7 +52,6 @@ const jogador = new Sprite({
 
 
 // crinado inimigo
-
 const inimigo = new Sprite({
     position: {
         x: 400,
@@ -67,14 +66,32 @@ const inimigo = new Sprite({
 
 //console.log(jogador)
 
-//loop animação 
+// criado para ajudar na animação mais fluida
+const keys = {
+    a: {
+        pressed: false
+    },
+    d: {
+        pressed: false
+    }
+}
 
+//loop animação 
 function animete(){
     window.requestAnimationFrame(animete)
     c.fillStyle='black'
     c.fillRect(0, 0, canvas.width , canvas.height)
     jogador.update()
     inimigo.update()
+
+    //criado para ajudar na animação mais fluida    
+    if(keys.a.pressed){
+        jogador.velocity.x = -1
+
+    }else if(keys.d.pressed){
+        jogador.velocity.x = 1
+
+    }
 }
 
 animete()
@@ -82,8 +99,11 @@ animete()
 // crinado eventos (função que "lê" o teclado quando preciona a tecla)
 window.addEventListener('keydown', (event) => {
     switch(event.key){
-        case 'd':
-            jogador.velocity.x =1
+        case 'd':// move para frente
+            keys.d.pressed = true
+        break
+        case 'a': //move para traz
+            keys.a.pressed = true
         break
     }
     console.log(event.key)
@@ -91,8 +111,11 @@ window.addEventListener('keydown', (event) => {
 // quando "solta" a tecla 
 window.addEventListener('keyup', (event) => {
     switch(event.key){
-        case 'd':
-            jogador.velocity.x = 0
+        case 'd': // para de mover frente
+            keys.d.pressed = false
+        break
+        case 'a': // para de mover traz 
+            keys.a.pressed = false
         break
     }
     console.log(event.key)
