@@ -9,7 +9,7 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 //criando jogador e inimigo 
 
-const gravity= 0.2
+const gravity= 0.7
 class Sprite {
     constructor({position, velocity}){
         this.position =position
@@ -83,7 +83,7 @@ const keys = {
     }
 }
 
-let lastKey
+
 
 //loop animação 
 function animete(){
@@ -97,20 +97,20 @@ function animete(){
     inimigo.velocity.x =0
 
     //movimentos jogador   
-    if(keys.a.pressed && lastKey ==='a'){
-        jogador.velocity.x = -1
+    if(keys.a.pressed && jogador.lastKey ==='a'){
+        jogador.velocity.x = -5
 
-    }else if(keys.d.pressed && lastKey==='d'){
-        jogador.velocity.x = 1
+    }else if(keys.d.pressed && jogador.lastKey==='d'){
+        jogador.velocity.x = 5
 
     }
 
         //movimentos inimigo   
         if(keys.ArrowLeft.pressed && inimigo.lastKey ==='ArrowLeft'){
-            inimigo.velocity.x = -1
+            inimigo.velocity.x = -5
     
         }else if(keys.ArrowRight.pressed && inimigo.lastKey==='ArrowRight'){
-            inimigo.velocity.x = 1
+            inimigo.velocity.x = 5
     
         }
 }
@@ -123,14 +123,14 @@ window.addEventListener('keydown', (event) => {
     switch(event.key){
         case 'd':// move para frente
             keys.d.pressed = true
-            lastKey= 'd'
+            jogador.lastKey= 'd'
         break
         case 'a': //move para traz
             keys.a.pressed = true
-            lastKey ='a'
+            jogador.lastKey ='a'
         break
         case 'w': //pular 
-            jogador.velocity.y = -10
+            jogador.velocity.y = -15
         break
     }
     // botoes do inimigo 
@@ -144,7 +144,7 @@ window.addEventListener('keydown', (event) => {
             inimigo.lastKey ='ArrowLeft'
         break
         case 'ArrowUp': //pular 
-            inimigo.velocity.y = -10
+            inimigo.velocity.y = -15
         break
     }
     console.log(event.key)
