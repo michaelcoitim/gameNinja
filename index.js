@@ -11,7 +11,7 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 const gravity= 0.7
 class Sprite {
-    constructor({position, velocity}){
+    constructor({position, velocity , color = 'red'}){
         this.position =position
         this.velocity =velocity
         this.height =150
@@ -22,14 +22,16 @@ class Sprite {
             height: 50
 
         }
+        this.color= color
 
     }
     // desenha
     draw(){
-        c.fillStyle='red'
+        c.fillStyle= this.color
         c.fillRect(this.position.x, this.position.y, 50, this.height)
 
         //attack Box
+        c.fillStyle='green'
         c.fillRect(
             this.attackBox.position.x,
             this.attackBox.position.y,
@@ -76,7 +78,8 @@ const inimigo = new Sprite({
         x: 0,
         y: 0
 
-    }
+    },
+    color: 'blue'
 })
 
 //console.log(jogador)
@@ -126,6 +129,12 @@ function animete(){
         }else if(keys.ArrowRight.pressed && inimigo.lastKey==='ArrowRight'){
             inimigo.velocity.x = 5
     
+        }
+
+
+        // Detector de colisões. 
+        if(jogador.attackBox.position.x + jogador.attackBox.width >= inimigo.position.x){
+            console.log('peguei')
         }
 }
 
