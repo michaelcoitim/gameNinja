@@ -14,6 +14,7 @@ class Sprite {
     constructor({position, velocity , color = 'red'}){
         this.position =position
         this.velocity =velocity
+        this.width = 50
         this.height =150
         this.lastKey
         this.attackBox = {
@@ -23,12 +24,13 @@ class Sprite {
 
         }
         this.color= color
+        this.isAttacking
 
     }
     // desenha
     draw(){
         c.fillStyle= this.color
-        c.fillRect(this.position.x, this.position.y, 50, this.height)
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
         //attack Box
         c.fillStyle='green'
@@ -50,6 +52,14 @@ class Sprite {
         }else{
             this.velocity.y += gravity
         }
+        
+    }
+
+    attack(){
+        this.isAttacking = true
+        setTimeout( () => {
+            this.isAttacking =false
+        }, 100)
     }
 
 }
@@ -133,9 +143,16 @@ function animete(){
 
 
         // Detector de colisões. 
-        if(jogador.attackBox.position.x + jogador.attackBox.width >= inimigo.position.x){
-            console.log('peguei')
-        }
+        if(jogador.attackBox.position.x + jogador.attackBox.width >= inimigo.position.x
+            && jogador.attackBox.position.x <= inimigo.position.x + inimigo.width
+            && jogador.attackBox.position.y + jogador.attackBox.height >= inimigo.position.y
+            && jogador.attackBox.position.y <= inimigo.position.y + inimigo.height
+            && jogador.isAttacking
+
+            ) {
+                jogador.isAttacking=false
+                console.log('peguei')
+            }
 }
 
 animete()
@@ -155,6 +172,9 @@ window.addEventListener('keydown', (event) => {
         case 'w': //pular 
             jogador.velocity.y = -15
         break
+        case ' ':
+            jogador.attack() 
+        break 
     }
     // botoes do inimigo 
     switch(event.key){
