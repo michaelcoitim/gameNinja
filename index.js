@@ -129,7 +129,14 @@ const keys = {
     }
 }
 
-
+function rectangularCollision({retangulo1, retangulo2}){
+    return (
+        retangulo1.attackBox.position.x + retangulo1.attackBox.width >= retangulo2.position.x
+            && retangulo1.attackBox.position.x <= retangulo2.position.x + retangulo2.width
+            && retangulo1.attackBox.position.y + retangulo1.attackBox.height >= retangulo2.position.y
+            && retangulo1.attackBox.position.y <= retangulo2.position.y + retangulo2.height
+    )
+}
 
 //loop animação 
 function animete(){
@@ -161,16 +168,26 @@ function animete(){
         }
 
 
-        // Detector de colisões. 
-        if(jogador.attackBox.position.x + jogador.attackBox.width >= inimigo.position.x
-            && jogador.attackBox.position.x <= inimigo.position.x + inimigo.width
-            && jogador.attackBox.position.y + jogador.attackBox.height >= inimigo.position.y
-            && jogador.attackBox.position.y <= inimigo.position.y + inimigo.height
-            && jogador.isAttacking
+        // Detector de colisões ataque jogador. 
+        if( rectangularCollision({
+            retangulo1:jogador,
+            retangulo2:inimigo
+        })&& jogador.isAttacking
 
             ) {
                 jogador.isAttacking=false
                 console.log('peguei')
+            }
+
+        // Detector de colisões ataque inimigo. 
+        if( rectangularCollision({
+            retangulo1:inimigo,
+            retangulo2:jogador
+        })&& jogador.isAttacking
+
+            ) {
+                inimigo.isAttacking=false
+                console.log('inimigo peguei')
             }
 }
 
@@ -207,6 +224,9 @@ window.addEventListener('keydown', (event) => {
         break
         case 'ArrowUp': //pular 
             inimigo.velocity.y = -15
+        break
+        case 'ArrowDown': //ataque 
+            inimigo.isAttacking = true
         break
     }
     console.log(event.key)
