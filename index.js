@@ -37,7 +37,7 @@ class Sprite {
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
         //attack Box
-       // if(this.isAttacking){
+        if(this.isAttacking){
         c.fillStyle='green'
         c.fillRect(
             this.attackBox.position.x,
@@ -45,7 +45,7 @@ class Sprite {
             this.attackBox.width,
             this.attackBox.height
             )
-        //}
+        }
 
     }
     //atualiza desenho 
@@ -226,10 +226,11 @@ window.addEventListener('keydown', (event) => {
             inimigo.velocity.y = -15
         break
         case 'ArrowDown': //ataque 
-            inimigo.isAttacking = true
+            //inimigo.isAttacking = true
+            inimigo.attack() 
         break
     }
-    console.log(event.key)
+    //console.log(event.key)
 })
 // quando "solta" a tecla 
 window.addEventListener('keyup', (event) => {
@@ -253,5 +254,5 @@ window.addEventListener('keyup', (event) => {
         break
 
     }
-    console.log(event.key)
+    //console.log(event.key)
 })
