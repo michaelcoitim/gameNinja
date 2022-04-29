@@ -183,7 +183,7 @@ function animete(){
         if( rectangularCollision({
             retangulo1:inimigo,
             retangulo2:jogador
-        })&& jogador.isAttacking
+        })&& inimigo.isAttacking
 
             ) {
                 inimigo.isAttacking=false
