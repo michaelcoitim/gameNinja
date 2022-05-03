@@ -29,6 +29,7 @@ class Sprite {
         }
         this.color= color
         this.isAttacking
+        this.health =100
 
     }
     // desenha
@@ -177,7 +178,8 @@ function animete(){
             ) {
                 jogador.isAttacking=false
                // console.log('peguei')
-                document.querySelector('#vidaInimigo').style.width='20%'
+               inimigo.health -= 20
+                document.querySelector('#vidaInimigo').style.width= inimigo.health +'%'
             }
 
         // Detector de colisões ataque inimigo. 
