@@ -9,7 +9,7 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 //criando jogador e inimigo 
 
-const gravity= 0.7
+const gravity= 0.9
 class Sprite {
     constructor({position, velocity , color = 'red', offSet}){
         this.position =position
@@ -176,7 +176,8 @@ function animete(){
 
             ) {
                 jogador.isAttacking=false
-                console.log('peguei')
+               // console.log('peguei')
+                document.querySelector('#vidaInimigo').style.width='20%'
             }
 
         // Detector de colisões ataque inimigo. 
@@ -187,7 +188,8 @@ function animete(){
 
             ) {
                 inimigo.isAttacking=false
-                console.log('inimigo peguei')
+                console.log('peguei inimigo')
+                
             }
 }
 
@@ -206,7 +208,7 @@ window.addEventListener('keydown', (event) => {
             jogador.lastKey ='a'
         break
         case 'w': //pular 
-            jogador.velocity.y = -15
+            jogador.velocity.y = -10
         break
         case ' ':
             jogador.attack() 
@@ -223,7 +225,7 @@ window.addEventListener('keydown', (event) => {
             inimigo.lastKey ='ArrowLeft'
         break
         case 'ArrowUp': //pular 
-            inimigo.velocity.y = -15
+            inimigo.velocity.y = -10
         break
         case 'ArrowDown': //ataque 
             //inimigo.isAttacking = true
