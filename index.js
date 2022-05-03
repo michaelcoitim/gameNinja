@@ -190,7 +190,9 @@ function animete(){
 
             ) {
                 inimigo.isAttacking=false
-                console.log('peguei inimigo')
+                //console.log('peguei inimigo')
+                jogador.health -= 20
+                document.querySelector('#vidaJogador').style.width= jogador.health +'%'
                 
             }
 }
