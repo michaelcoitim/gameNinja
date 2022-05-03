@@ -1,2 +1,39 @@
-<canvas></canvas>
-<script src="index.js"></script>
+<header>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+    </style>
+</header>
+<body>
+    <!-- tela jogo-->
+    <div style="position: relative; display: inline-block;">
+        <!--contenner vida/relogio-->
+        <div style="
+            position:absolute;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            padding: 20px;
+            ">
+            <!--vida jogador-->
+            <div style="background-color:yellow ; height: 30px; width: 100%;" ></div>
+
+            <!--tempo-->
+            <div style="
+                background-color:red ;
+                height:100px;
+                width: 100px;
+                flex-shrink: 0;
+            "></div>
+
+            <!--vida inimigo-->
+            <div style="background-color:yellow ; height: 30px; width: 100%;"></div>
+
+        </div>
+
+        <canvas></canvas>
+        
+    </div>
+    <script src="index.js"></script>
+</body>
