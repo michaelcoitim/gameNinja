@@ -16,10 +16,10 @@
             align-items: center;
             padding: 20px;
             ">
-            <div style="position: relative; height: 30px; width: 100%;">
+            <div style="position: relative; height: 30px; width: 100%; display: flex; justify-content: flex-end;">
                 <!--vida Jogador-->
-                <div  style="background-color:yellow; height: 30px; "></div>
-                <div id="vidaJOgador" style="position:absolute; background-color:blue; top: 0; right: 0; bottom: 0; left: 0;"></div>
+                <div  style="background-color:yellow; height: 30px; width: 100%;"></div>
+                <div id="vidaJOgador" style="position:absolute; background-color:blue; top: 0; right: 0; bottom: 0; width: 100%;"></div>
             </div>
 
             <!--tempo-->
@@ -28,8 +28,11 @@
                 height:100px;
                 width: 100px;
                 flex-shrink: 0;
-            "></div>
-            <div style="position: relative; height: 30px; width: 100%;">
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            ">10</div>
+            <div style="position: relative; height: 30px; width: 100%; ">
             <!--vida inimigo-->
                 <div  style="background-color:yellow; height: 30px; "></div>
                 <div id="vidaInimigo" style="position:absolute; background-color:blue; top: 0; right: 0; bottom: 0; left: 0;"></div>
