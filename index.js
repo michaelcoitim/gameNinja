@@ -139,6 +139,17 @@ function rectangularCollision({retangulo1, retangulo2}){
     )
 }
 
+let timer = 30
+function cronometro(){
+    setTimeout(cronometro, 1000)
+    if(timer > 0) {
+        timer--
+        document.querySelector('#timer').innerHTML=timer
+    }
+
+}
+cronometro()
+
 //loop animação 
 function animete(){
     window.requestAnimationFrame(animete)
