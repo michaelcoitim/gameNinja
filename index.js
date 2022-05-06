@@ -139,12 +139,29 @@ function rectangularCollision({retangulo1, retangulo2}){
     )
 }
 
-let timer = 30
+let timer = 10 // para testes 
 function cronometro(){
-    setTimeout(cronometro, 1000)
+    // REGRA conometro
     if(timer > 0) {
+        setTimeout(cronometro, 1000)
         timer--
         document.querySelector('#timer').innerHTML=timer
+    }
+
+    // regras dos vencedores
+    if(timer===0){
+        document.querySelector('#displayVencedores').style.display = 'flex'
+
+        if(jogador.health == inimigo.health){
+            document.querySelector('#displayVencedores').innerHTML= 'Empate'
+           
+
+        }else if(jogador.health > inimigo.health){
+            document.querySelector('#displayVencedores').innerHTML= 'jogador 1 venceu'
+
+        } else if(jogador.health < inimigo.health){
+            document.querySelector('#displayVencedores').innerHTML= 'jogador 2 venceu'
+        }
     }
 
 }
