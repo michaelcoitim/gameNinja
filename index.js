@@ -139,7 +139,8 @@ function rectangularCollision({retangulo1, retangulo2}){
     )
 }
 
-function vencedores({jogador, inimigo}){
+function vencedores({jogador, inimigo ,timerId}){
+    clearTimeout(timerId)
     document.querySelector('#displayVencedores').style.display = 'flex'
 
     if(jogador.health == inimigo.health){
@@ -155,11 +156,12 @@ function vencedores({jogador, inimigo}){
 
 }
 
-let timer = 60 // para testes 
+let timer = 60 
+let timerId
 function cronometro(){
     // REGRA conometro
     if(timer > 0) {
-        setTimeout(cronometro, 1000)
+        timerId = setTimeout(cronometro, 1000)
         timer--
         document.querySelector('#timer').innerHTML=timer
     }
@@ -167,7 +169,7 @@ function cronometro(){
     // regras dos vencedores
     if(timer===0){
         
-        vencedores({jogador, inimigo})
+        vencedores({jogador, inimigo,timerId})
 
         
     }
@@ -234,7 +236,7 @@ function animete(){
         
         //fim de vida fim de jogo
         if(inimigo.health <= 0 || jogador.health <= 0){
-            vencedores({jogador, inimigo})
+            vencedores({jogador, inimigo,timerId})
         }
 
 
