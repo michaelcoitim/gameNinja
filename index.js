@@ -139,7 +139,23 @@ function rectangularCollision({retangulo1, retangulo2}){
     )
 }
 
-let timer = 10 // para testes 
+function vencedores({jogador, inimigo}){
+    document.querySelector('#displayVencedores').style.display = 'flex'
+
+    if(jogador.health == inimigo.health){
+        document.querySelector('#displayVencedores').innerHTML= 'Empate'
+    
+
+    }else if(jogador.health > inimigo.health){
+        document.querySelector('#displayVencedores').innerHTML= 'jogador 1 venceu'
+
+    } else if(jogador.health < inimigo.health){
+        document.querySelector('#displayVencedores').innerHTML= 'jogador 2 venceu'
+    }
+
+}
+
+let timer = 60 // para testes 
 function cronometro(){
     // REGRA conometro
     if(timer > 0) {
@@ -150,18 +166,10 @@ function cronometro(){
 
     // regras dos vencedores
     if(timer===0){
-        document.querySelector('#displayVencedores').style.display = 'flex'
+        
+        vencedores({jogador, inimigo})
 
-        if(jogador.health == inimigo.health){
-            document.querySelector('#displayVencedores').innerHTML= 'Empate'
-           
-
-        }else if(jogador.health > inimigo.health){
-            document.querySelector('#displayVencedores').innerHTML= 'jogador 1 venceu'
-
-        } else if(jogador.health < inimigo.health){
-            document.querySelector('#displayVencedores').innerHTML= 'jogador 2 venceu'
-        }
+        
     }
 
 }
@@ -206,7 +214,7 @@ function animete(){
             ) {
                 jogador.isAttacking=false
                // console.log('peguei')
-               inimigo.health -= 20
+                inimigo.health -= 20
                 document.querySelector('#vidaInimigo').style.width= inimigo.health +'%'
             }
 
@@ -223,6 +231,13 @@ function animete(){
                 document.querySelector('#vidaJogador').style.width= jogador.health +'%'
                 
             }
+        
+        //fim de vida fim de jogo
+        if(inimigo.health <= 0 || jogador.health <= 0){
+            vencedores({jogador, inimigo})
+        }
+
+
 }
 
 animete()
