@@ -11,6 +11,15 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 const gravity= 0.9
 
+// tela de fundo, chamado uma classe
+
+const background = new Sprite({
+    position: {
+        x:0,
+        y:0
+    },
+    imageSrc: './img/background.png'
+})
 
 const jogador = new Fighter({
     position: {
@@ -119,6 +128,8 @@ function animete(){
     window.requestAnimationFrame(animete)
     c.fillStyle='black'
     c.fillRect(0, 0, canvas.width , canvas.height)
+    background.update()
+
     jogador.update()
     inimigo.update()
 
