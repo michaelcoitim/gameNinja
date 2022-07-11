@@ -23,10 +23,11 @@ const background = new Sprite({
 
 const shop = new Sprite({
     position: {
-        x:0,
-        y:0
+        x:720,
+        y:165
     },
-    imageSrc: './img/shop.png'
+    imageSrc: './img/shop.png',
+    scale:2.5
 })
 
 const jogador = new Fighter({
