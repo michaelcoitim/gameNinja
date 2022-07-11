@@ -21,6 +21,14 @@ const background = new Sprite({
     imageSrc: './img/background.png'
 })
 
+const shop = new Sprite({
+    position: {
+        x:0,
+        y:0
+    },
+    imageSrc: './img/shop.png'
+})
+
 const jogador = new Fighter({
     position: {
         x: 0,
@@ -94,6 +102,7 @@ function animete(){
     c.fillStyle='black'
     c.fillRect(0, 0, canvas.width , canvas.height)
     background.update()
+    shop.update()
 
     jogador.update()
     inimigo.update()
