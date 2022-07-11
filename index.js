@@ -27,28 +27,13 @@ class Sprite {
             height: 50
 
         }
-        this.color= color
-        this.isAttacking
-        this.health =100
+
+        
 
     }
     // desenha
-    draw(){
-        c.fillStyle= this.color
-        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    draw(){ }
 
-        //attack Box
-        if(this.isAttacking){
-        c.fillStyle='green'
-        c.fillRect(
-            this.attackBox.position.x,
-            this.attackBox.position.y,
-            this.attackBox.width,
-            this.attackBox.height
-            )
-        }
-
-    }
     //atualiza desenho 
     update(){
         this.draw()
