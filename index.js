@@ -13,22 +13,8 @@ const gravity= 0.9
 class Sprite {
     constructor({position, velocity , color = 'red', offSet}){
         this.position =position
-        this.velocity =velocity
         this.width = 50
         this.height =150
-        this.lastKey
-        this.attackBox = { //ataque
-            position: {
-                x: this.position.x, 
-                y: this.position.y
-            } ,
-            offSet, //delocamento do ataque
-            width: 100 ,
-            height: 50
-
-        }
-
-        
 
     }
     // desenha
