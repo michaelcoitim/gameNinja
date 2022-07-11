@@ -12,7 +12,7 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 const gravity= 0.9
 
 
-const jogador = new Sprite({
+const jogador = new Fighter({
     position: {
         x: 0,
         y: 0
@@ -31,7 +31,7 @@ const jogador = new Sprite({
 
 
 // crinado inimigo
-const inimigo = new Sprite({
+const inimigo = new Fighter({
     position: {
         x: 400,
         y: 100
