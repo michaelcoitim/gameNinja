@@ -7,13 +7,14 @@ class Sprite {
         this.image.src = imageSrc
         this.scale= scale
         this.framesMax = framesMax
+        this.framesCurrent =0
 
     }
     // desenha
     draw(){ 
         c.drawImage(
             this.image,
-            0,
+            this.framesCurrent * (this.image.width / this.framesMax),
             0,
             this.image.width / this.framesMax,
             this.image.height,
@@ -27,6 +28,11 @@ class Sprite {
     //atualiza desenho 
     update(){
         this.draw()
+        if(this.framesCurrent < this.framesMax){
+            this.framesCurrent ++
+        } else{
+            this.framesCurrent =0
+        }
 
         
     }
