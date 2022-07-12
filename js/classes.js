@@ -1,5 +1,5 @@
 class Sprite {
-    constructor({position, imageSrc, scale=1, framesMax=1}){
+    constructor({position, imageSrc, scale=1, framesMax=1, offset = {x: 0 , y: 0} }){
         this.position =position
         this.width = 50
         this.height =150
@@ -10,6 +10,7 @@ class Sprite {
         this.framesCurrent =0
         this.framesElapsed=0
         this.framesHold =10
+        this.offset = offset
 
     }
     // desenha
@@ -20,16 +21,15 @@ class Sprite {
             0,
             this.image.width / this.framesMax,
             this.image.height,
-            this.position.x,
-            this.position.y,
+            this.position.x - this.offset.x,
+            this.position.y - this.offset.y,
             (this.image.width / this.framesMax) * this.scale,
             this.image.height * this.scale 
             )
     }
 
-    //atualiza desenho 
-    update(){
-        this.draw()
+
+    animeteFremes(){
         this.framesElapsed ++ 
         if(this.framesElapsed % this.framesHold ===0){
             if(this.framesCurrent < this.framesMax -1){
@@ -38,6 +38,13 @@ class Sprite {
                 this.framesCurrent =0
             }
         }
+
+    }
+
+    //atualiza desenho 
+    update(){
+        this.draw()
+        this.animeteFremes()
 
         
     }
@@ -51,17 +58,18 @@ class Fighter extends Sprite{
         position,
         velocity,
         color = 'red',
-        offSet,
         imageSrc,
         scale=1,
-        framesMax=1}){
+        framesMax=1,
+        offset = {x: 0 , y: 0}}){
         
             // chamando super contrutor -> animação dos lutadores 
         super({
             position,
             imageSrc,
             scale,
-            framesMax
+            framesMax,
+            offset 
         })    
 
         //this.position =position
@@ -74,7 +82,7 @@ class Fighter extends Sprite{
                 x: this.position.x, 
                 y: this.position.y
             } ,
-            offSet, //delocamento do ataque
+            //offSet, //delocamento do ataque
             width: 100 ,
             height: 50
 
@@ -110,6 +118,9 @@ class Fighter extends Sprite{
     //atualiza desenho 
     update(){
         this.draw()
+        this.animeteFremes()
+
+        
         this.attackBox.position.x = this.position.x + this.attackBox.offSet.x
         this.attackBox.position.y = this.position.y
 

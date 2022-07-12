@@ -46,7 +46,9 @@ const jogador = new Fighter({
         y: 0
     },
     imageSrc: './img/samuraiMack/Idle.png',
-    framesMax:8
+    framesMax:8,
+    scale:2.5,
+    offset:{ x:215 , y:-179}
 })
 
 
@@ -109,7 +111,7 @@ function animete(){
     shop.update()
 
     jogador.update()
-    inimigo.update()
+   // inimigo.update()
 
     jogador.velocity.x=0
     inimigo.velocity.x =0
