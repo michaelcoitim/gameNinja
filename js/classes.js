@@ -46,8 +46,26 @@ class Sprite {
 }
 
 
-class Fighter {
-    constructor({position, velocity , color = 'red', offSet}){
+class Fighter extends Sprite{
+    constructor({
+        position,
+        velocity,
+        color = 'red',
+        offSet,
+        imageSrc,
+        scale=1,
+        framesMax=1}){
+        
+            // chamando super contrutor -> animação dos lutadores 
+        super({
+            image,
+            scale,
+            framesMax,
+            framesCurrent,
+            framesElapsed,
+            framesHold
+        })    
+
         this.position =position
         this.velocity =velocity
         this.width = 50
@@ -86,7 +104,7 @@ class Fighter {
 
     }
     //atualiza desenho 
-    update(){
+    /*update(){
         this.draw()
         this.attackBox.position.x = this.position.x + this.attackBox.offSet.x
         this.attackBox.position.y = this.position.y
@@ -100,7 +118,7 @@ class Fighter {
             this.velocity.y += gravity
         }
         
-    }
+    }*/
 
     attack(){
         this.isAttacking = true
