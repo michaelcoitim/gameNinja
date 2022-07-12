@@ -58,15 +58,13 @@ class Fighter extends Sprite{
         
             // chamando super contrutor -> animação dos lutadores 
         super({
-            image,
+            position,
+            imageSrc,
             scale,
-            framesMax,
-            framesCurrent,
-            framesElapsed,
-            framesHold
+            framesMax
         })    
 
-        this.position =position
+        //this.position =position
         this.velocity =velocity
         this.width = 50
         this.height =150
@@ -81,13 +79,18 @@ class Fighter extends Sprite{
             height: 50
 
         }
+        
         this.color= color
         this.isAttacking
         this.health =100
+        this.framesCurrent =0
+        this.framesElapsed=0
+        this.framesHold =10
+
 
     }
     // desenha
-    draw(){
+   /* draw(){
         c.fillStyle= this.color
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
@@ -102,9 +105,10 @@ class Fighter extends Sprite{
             )
         }
 
-    }
+    }*/
+
     //atualiza desenho 
-    /*update(){
+    update(){
         this.draw()
         this.attackBox.position.x = this.position.x + this.attackBox.offSet.x
         this.attackBox.position.y = this.position.y
@@ -118,7 +122,7 @@ class Fighter extends Sprite{
             this.velocity.y += gravity
         }
         
-    }*/
+    }
 
     attack(){
         this.isAttacking = true

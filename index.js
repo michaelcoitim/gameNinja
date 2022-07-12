@@ -44,7 +44,9 @@ const jogador = new Fighter({
     offSet: {
         x: 0,
         y: 0
-    }
+    },
+    imageSrc: './img/samuraiMack/Idle.png',
+    framesMax:8
 })
 
 
