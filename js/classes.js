@@ -1,5 +1,5 @@
 class Sprite {
-    constructor({position, imageSrc, scale=1, framesMax=1, offset = {x: 0 , y: 0} }){
+    constructor({position, imageSrc, scale=1, framesMax=1, offset = { x: 0 , y: 0 } }){
         this.position =position
         this.width = 50
         this.height =150
@@ -48,8 +48,6 @@ class Sprite {
 
         
     }
-
-
 }
 
 
@@ -61,7 +59,9 @@ class Fighter extends Sprite{
         imageSrc,
         scale=1,
         framesMax=1,
-        offset = {x: 0 , y: 0}}){
+        offset = {x: 0 , y: 0},
+        sprites 
+    }){
         
             // chamando super contrutor -> animação dos lutadores 
         super({
@@ -82,7 +82,7 @@ class Fighter extends Sprite{
                 x: this.position.x, 
                 y: this.position.y
             } ,
-            //offSet, //delocamento do ataque
+            offset, //delocamento do ataque
             width: 100 ,
             height: 50
 
@@ -94,11 +94,21 @@ class Fighter extends Sprite{
         this.framesCurrent =0
         this.framesElapsed=0
         this.framesHold =10
+        this.sprites = sprites
+
+        for( const sprite in this.sprites){
+            sprites[sprite].image = new Image()
+            sprites[sprite].imageSrc= sprites[sprite].imageSrc
+
+        }
+
+        console.log(this.sprites)
+
 
 
     }
     // desenha
-   /* draw(){
+    /* draw(){
         c.fillStyle= this.color
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
@@ -119,9 +129,7 @@ class Fighter extends Sprite{
     update(){
         this.draw()
         this.animeteFremes()
-
-        
-        this.attackBox.position.x = this.position.x + this.attackBox.offSet.x
+        this.attackBox.position.x = this.position.x + this.attackBox.offset.x
         this.attackBox.position.y = this.position.y
 
         this.position.x += this.velocity.x
