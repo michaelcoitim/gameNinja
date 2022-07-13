@@ -46,7 +46,7 @@ const jogador = new Fighter({
         y: 0
     },
     imageSrc: './img/samuraiMack/Idle.png',
-    framesMax:8,
+    framesMax: 8,
     scale:2.5,
     offset:{ x:215 , y:-179},
     sprites:{
@@ -128,8 +128,10 @@ function animete(){
     inimigo.velocity.x =0
 
     //movimentos jogador   
+    jogador.image= jogador.sprites.idle.image
     if(keys.a.pressed && jogador.lastKey ==='a'){
         jogador.velocity.x = -5
+        jogador.image= jogador.sprites.run.image
 
     }else if(keys.d.pressed && jogador.lastKey==='d'){
         jogador.velocity.x = 5

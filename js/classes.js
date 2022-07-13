@@ -24,8 +24,8 @@ class Sprite {
             this.position.x - this.offset.x,
             this.position.y - this.offset.y,
             (this.image.width / this.framesMax) * this.scale,
-            this.image.height * this.scale 
-            )
+            this.image.height * this.scale
+        )
     }
 
 
@@ -102,13 +102,9 @@ class Fighter extends Sprite{
 
         }
 
-        console.log(this.sprites)
-
-
-
     }
     // desenha
-    /* draw(){
+    /*draw(){
         c.fillStyle= this.color
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
