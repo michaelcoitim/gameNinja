@@ -56,8 +56,13 @@ const jogador = new Fighter({
         },
         run:{
             imageSrc:'./img/samuraiMack/Run.png',
-            framesMax:8,
-            image: new Image()
+            framesMax:8
+        
+        },
+        jump:{
+            imageSrc:'./img/samuraiMack/Jump.png',
+            framesMax:2
+        
         }
     }
 })
@@ -83,7 +88,7 @@ const inimigo = new Fighter({
 
 })
 
-//console.log(jogador)
+
 
 // criado para ajudar na animação mais fluida-"mapa de teclas" especificações iniciais 
 const keys = {
@@ -128,13 +133,19 @@ function animete(){
     inimigo.velocity.x =0
 
     //movimentos jogador   
-    jogador.image= jogador.sprites.idle.image
+    jogador.switchSprite('idle')
     if(keys.a.pressed && jogador.lastKey ==='a'){
         jogador.velocity.x = -5
-        jogador.image= jogador.sprites.run.image
+        jogador.switchSprite('run')
 
     }else if(keys.d.pressed && jogador.lastKey==='d'){
         jogador.velocity.x = 5
+        jogador.switchSprite('run')
+
+    }
+    // jorgador pulando 
+    if(jogador.velocity.y < 0){
+        jogador.switchSprite('jump')
 
     }
 
