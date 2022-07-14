@@ -48,7 +48,7 @@ const jogador = new Fighter({
     imageSrc: './img/samuraiMack/Idle.png',
     framesMax: 8,
     scale:2.5,
-    offset:{ x:215 , y:-179},
+    offset:{ x:215 , y:180},
     sprites:{
         idle:{
             imageSrc:'./img/samuraiMack/Idle.png',
@@ -93,6 +93,35 @@ const inimigo = new Fighter({
     offset: {
         x: -50,
         y: 0
+    },
+    imageSrc: './img/kenji/Idle.png',
+    framesMax: 4,
+    scale:2.5,
+    offset:{ x:215 , y:180},
+    sprites:{
+        idle:{
+            imageSrc:'./img/kenji/Idle.png',
+            framesMax:4
+        },
+        run:{
+            imageSrc:'./img/kenji/Run.png',
+            framesMax:8
+        
+        },
+        jump:{
+            imageSrc:'./img/kenji/Jump.png',
+            framesMax:2
+        
+        },
+        fall:{
+            imageSrc:'./img/kenji/Fall.png',
+            framesMax:2
+        },
+        Attack1:{
+            imageSrc:'./img/kenji/Attack1.png',
+            framesMax:4
+        }
+        
     }
 
 })
@@ -136,7 +165,7 @@ function animete(){
     shop.update()
 
     jogador.update()
-   // inimigo.update()
+    inimigo.update()
 
     jogador.velocity.x=0
     inimigo.velocity.x =0
