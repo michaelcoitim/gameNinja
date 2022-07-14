@@ -70,7 +70,12 @@ const jogador = new Fighter({
         },
         Attack1:{
             imageSrc:'./img/samuraiMack/Attack1.png',
-            framesMax:4
+            framesMax:6
+        },
+        attackBox:{
+            offset:{ x:100 , y: 50},
+            width:150,
+            height:50
         }
         
     }
@@ -120,6 +125,11 @@ const inimigo = new Fighter({
         Attack1:{
             imageSrc:'./img/kenji/Attack1.png',
             framesMax:4
+        },
+        attackBox:{
+            offset:{ x:100 , y: 50},
+            width:150,
+            height:50
         }
         
     }
@@ -217,7 +227,7 @@ function animete(){
         if( rectangularCollision({
             retangulo1:jogador,
             retangulo2:inimigo
-        })&& jogador.isAttacking
+        })&& jogador.isAttacking && jogador.framesCurrent === 4
 
             ) {
                 jogador.isAttacking=false
