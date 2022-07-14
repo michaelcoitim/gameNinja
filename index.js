@@ -48,7 +48,7 @@ const jogador = new Fighter({
     imageSrc: './img/samuraiMack/Idle.png',
     framesMax: 8,
     scale:2.5,
-    offset:{ x:215 , y:180},
+    offset:{ x:215 , y:156},
     sprites:{
         idle:{
             imageSrc:'./img/samuraiMack/Idle.png',
@@ -70,7 +70,7 @@ const jogador = new Fighter({
         },
         Attack1:{
             imageSrc:'./img/samuraiMack/Attack1.png',
-            framesMax:6
+            framesMax:4
         }
         
     }
@@ -97,7 +97,7 @@ const inimigo = new Fighter({
     imageSrc: './img/kenji/Idle.png',
     framesMax: 4,
     scale:2.5,
-    offset:{ x:215 , y:180},
+    offset:{ x:215 , y:155},
     sprites:{
         idle:{
             imageSrc:'./img/kenji/Idle.png',
@@ -163,7 +163,6 @@ function animete(){
     c.fillRect(0, 0, canvas.width , canvas.height)
     background.update()
     shop.update()
-
     jogador.update()
     inimigo.update()
 
@@ -188,18 +187,30 @@ function animete(){
     if(jogador.velocity.y < 0){
         jogador.switchSprite('jump')
 
-    }else if (jogador.velocity.y >0){
+    }else if (jogador.velocity.y > 0){
         jogador.switchSprite('fall')
     }
 
         //movimentos inimigo   
         if(keys.ArrowLeft.pressed && inimigo.lastKey ==='ArrowLeft'){
             inimigo.velocity.x = -5
+            inimigo.switchSprite('run')
     
         }else if(keys.ArrowRight.pressed && inimigo.lastKey==='ArrowRight'){
             inimigo.velocity.x = 5
+            inimigo.switchSprite('run')
     
+        }else{
+            inimigo.switchSprite('idle')
         }
+
+            // inimigo pulando 
+    if(inimigo.velocity.y < 0){
+        inimigo.switchSprite('jump')
+    }else if (inimigo.velocity.y > 0){
+        inimigo.switchSprite('fall')
+    }
+
 
 
         // Detector de colisões ataque jogador. 

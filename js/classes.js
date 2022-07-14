@@ -9,7 +9,7 @@ class Sprite {
         this.framesMax = framesMax
         this.framesCurrent =0
         this.framesElapsed=0
-        this.framesHold =10
+        this.framesHold =5
         this.offset = offset
 
     }
@@ -31,15 +31,15 @@ class Sprite {
 
     animeteFremes(){
         this.framesElapsed ++ 
-        if(this.framesElapsed % this.framesHold ===0){
+
+        if(this.framesElapsed % this.framesHold === 0){
             if(this.framesCurrent < this.framesMax -1){
                 this.framesCurrent ++
             } else{
-                this.framesCurrent =0
+                this.framesCurrent = 0
             }
         }
-
-    }
+}
 
     //atualiza desenho 
     update(){
@@ -65,6 +65,7 @@ class Fighter extends Sprite{
         
             // chamando super contrutor -> animação dos lutadores 
         super({
+            
             position,
             imageSrc,
             scale,
@@ -93,7 +94,7 @@ class Fighter extends Sprite{
         this.health =100
         this.framesCurrent =0
         this.framesElapsed=0
-        this.framesHold =10
+        this.framesHold =5
         this.sprites = sprites
 
         for( const sprite in this.sprites){
@@ -125,8 +126,15 @@ class Fighter extends Sprite{
     update(){
         this.draw()
         this.animeteFremes()
+
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x
         this.attackBox.position.y = this.position.y
+
+        c.fillRect(
+            this.attackBox.position.x,
+            this.attackBox.position.y, 
+            this.attackBox.width, 
+            this.attackBox.height )
 
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
@@ -149,9 +157,10 @@ class Fighter extends Sprite{
         }, 100)
     }
     // imagens dos movimentos / tratativa de duplicidade 
-    switchSprite(sprite) {
-        if(this.image === this.sprites.attack1.image && this.framesCurrent < this.sprites.attack1.framesMax - 1) return
-        switch (sprite){
+    switchSprite (sprite) {
+        if (this.image === this.sprites.attack1.image &&
+            this.framesCurrent < this.sprites.attack1.framesMax - 1) return
+        switch(sprite){
             case 'idle' :
                 if(this.image !== this.sprites.idle.image){
                     this.image = this.sprites.idle.image
