@@ -142,6 +142,7 @@ class Fighter extends Sprite{
     }
 
     attack(){
+        this.switchSprite('attack1')
         this.isAttacking = true
         setTimeout( () => {
             this.isAttacking =false
@@ -149,6 +150,7 @@ class Fighter extends Sprite{
     }
     // imagens dos movimentos / tratativa de duplicidade 
     switchSprite(sprite) {
+        if(this.image === this.sprites.attack1.image) return
         switch (sprite){
             case 'idle' :
                 if(this.image !== this.sprites.idle.image){
@@ -175,6 +177,14 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.fall.image) {
                     this.image = this.sprites.fall.image
                     this.framesMax = this.sprites.fall.framesMax
+                    this.framesCurrent=0
+                }
+            break;
+
+            case 'attack1':
+                if (this.image !== this.sprites.attack1.image) {
+                    this.image = this.sprites.attack1.image
+                    this.framesMax = this.sprites.attack1.framesMax
                     this.framesCurrent=0
                 }
             break;
