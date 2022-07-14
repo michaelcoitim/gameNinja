@@ -63,7 +63,12 @@ const jogador = new Fighter({
             imageSrc:'./img/samuraiMack/Jump.png',
             framesMax:2
         
+        },
+        fall:{
+            imageSrc:'./img/samuraiMack/Fall.png',
+            framesMax:2
         }
+        
     }
 })
 
@@ -133,7 +138,7 @@ function animete(){
     inimigo.velocity.x =0
 
     //movimentos jogador   
-    jogador.switchSprite('idle')
+    
     if(keys.a.pressed && jogador.lastKey ==='a'){
         jogador.velocity.x = -5
         jogador.switchSprite('run')
@@ -141,12 +146,17 @@ function animete(){
     }else if(keys.d.pressed && jogador.lastKey==='d'){
         jogador.velocity.x = 5
         jogador.switchSprite('run')
-
+    }else{
+        jogador.switchSprite('idle')
     }
+
+
     // jorgador pulando 
     if(jogador.velocity.y < 0){
         jogador.switchSprite('jump')
 
+    }else if (jogador.velocity.y >0){
+        jogador.switchSprite('fall')
     }
 
         //movimentos inimigo   
