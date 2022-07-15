@@ -71,13 +71,14 @@ const jogador = new Fighter({
         Attack1:{
             imageSrc:'./img/samuraiMack/Attack1.png',
             framesMax:6
-        },
-        attackBox:{
-            offset:{ x:100 , y: 50},
-            width:150,
-            height:50
         }
         
+        
+    },
+    attackBox:{
+        offset:{ x:100 , y: 50},
+        width:150,
+        height:50
     }
 })
 
@@ -126,12 +127,16 @@ const inimigo = new Fighter({
             imageSrc:'./img/kenji/Attack1.png',
             framesMax:4
         },
-        attackBox:{
-            offset:{ x:-170 , y: 50},
-            width:170,
-            height:50
+        takeHit:{
+            imageSrc:'./img/kenji/Take hit.png',
+            framesMax:3
         }
         
+        
+    },attackBox:{
+        offset:{ x:-170 , y: 50},
+        width:170,
+        height:50
     }
 
 })
