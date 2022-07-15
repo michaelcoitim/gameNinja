@@ -127,8 +127,8 @@ const inimigo = new Fighter({
             framesMax:4
         },
         attackBox:{
-            offset:{ x:100 , y: 50},
-            width:150,
+            offset:{ x:-170 , y: 50},
+            width:170,
             height:50
         }
         
@@ -236,11 +236,17 @@ function animete(){
                 document.querySelector('#vidaInimigo').style.width= inimigo.health +'%'
             }
 
+            //jogador errou ataque
+            if(jogador.isAttacking && jogador.framesCurrent ===4) {
+                jogador.isAttacking=false
+
+            }
+
         // Detector de colisões ataque inimigo. 
         if( rectangularCollision({
             retangulo1:inimigo,
             retangulo2:jogador
-        })&& inimigo.isAttacking
+        })&& inimigo.isAttacking && inimigo.framesCurrent ===2
 
             ) {
                 inimigo.isAttacking=false
@@ -248,6 +254,12 @@ function animete(){
                 jogador.health -= 20
                 document.querySelector('#vidaJogador').style.width= jogador.health +'%'
                 
+            }
+            
+            //inimigo errou ataque
+            if(inimigo.isAttacking && inimigo.framesCurrent ===2) {
+                inimigo.isAttacking=false
+            
             }
         
         //fim de vida fim de jogo
