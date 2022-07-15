@@ -75,6 +75,10 @@ const jogador = new Fighter({
         takeHit:{
             imageSrc:'./img/samuraiMack/Take Hit - white silhouette.png',
             framesMax:4
+        },
+        death:{
+            imageSrc:'./img/samuraiMack/Death.png',
+            framesMax:6
         }
         
         
@@ -134,6 +138,10 @@ const inimigo = new Fighter({
         takeHit:{
             imageSrc:'./img/kenji/Take hit.png',
             framesMax:3
+        },
+        death:{
+            imageSrc:'./img/kenji/Death.png',
+            framesMax:7
         }
         
         
@@ -252,16 +260,15 @@ function animete(){
 
             }
 
-        // Detector de colisões ataque inimigo. 
+        // Detector de colisões ataque inimigo/ jogador recebendo ataque. 
         if( rectangularCollision({
             retangulo1:inimigo,
             retangulo2:jogador
         })&& inimigo.isAttacking && inimigo.framesCurrent ===2
 
             ) {
+                jogador.takeHit()
                 inimigo.isAttacking=false
-                //console.log('peguei inimigo')
-                jogador.health -= 20
                 document.querySelector('#vidaJogador').style.width= jogador.health +'%'
                 
             }

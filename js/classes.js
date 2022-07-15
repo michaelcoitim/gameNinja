@@ -157,13 +157,20 @@ class Fighter extends Sprite{
     }
 
     takeHit(){
-        this,switchSprite('takeHit')
         this.health -= 20
+        if(this.health <=0){
+            this.switchSprite('death')
+        }else{
+            this.switchSprite('takeHit')
+        }
+
     }
 
     // imagens dos movimentos / tratativa de duplicidade 
     switchSprite(sprite) {
-
+        if(this.image === this.sprites.death){
+            return
+        }
     
         //  qndo realizar un ataque 
         if (
@@ -233,7 +240,10 @@ class Fighter extends Sprite{
             this.framesCurrent = 0
             }
             break
+
+            
         }
+        
     }
 
 }
