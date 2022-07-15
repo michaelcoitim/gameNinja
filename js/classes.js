@@ -97,6 +97,7 @@ class Fighter extends Sprite{
         this.framesElapsed=0
         this.framesHold =5
         this.sprites = sprites
+        this.dead= false
 
         for( const sprite in this.sprites){
             sprites[sprite].image = new Image()
@@ -126,7 +127,7 @@ class Fighter extends Sprite{
     //atualiza desenho 
     update(){
         this.draw()
-        this.animeteFremes()
+        if(!this.dead) this.animeteFremes()
 
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y
@@ -169,6 +170,9 @@ class Fighter extends Sprite{
     // imagens dos movimentos / tratativa de duplicidade 
     switchSprite(sprite) {
         if(this.image === this.sprites.death){
+            if(this.framesCurrent === this.sprites.death.framesMax - 1){
+                this.dead=true
+            }
             return
         }
     
