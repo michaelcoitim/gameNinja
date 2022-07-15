@@ -29,7 +29,7 @@ class Sprite {
     }
 
 
-    animeteFremes(){
+    animeteFrames(){
         this.framesElapsed ++ 
 
         if(this.framesElapsed % this.framesHold === 0){
@@ -44,7 +44,7 @@ class Sprite {
     //atualiza desenho 
     update(){
         this.draw()
-        this.animeteFremes()
+        this.animeteFrames()
 
         
     }
@@ -127,7 +127,7 @@ class Fighter extends Sprite{
     //atualiza desenho 
     update(){
         this.draw()
-        if(!this.dead) this.animeteFremes()
+        if(!this.dead) this.animeteFrames()
 
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y
