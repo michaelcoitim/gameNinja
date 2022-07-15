@@ -71,6 +71,10 @@ const jogador = new Fighter({
         Attack1:{
             imageSrc:'./img/samuraiMack/Attack1.png',
             framesMax:6
+        },
+        takeHit:{
+            imageSrc:'./img/samuraiMack/Take Hit - white silhouette.png',
+            framesMax:4
         }
         
         
@@ -193,7 +197,7 @@ function animete(){
     }else if(keys.d.pressed && jogador.lastKey==='d'){
         jogador.velocity.x = 5
         jogador.switchSprite('run')
-    }else{
+    }else{ 
         jogador.switchSprite('idle')
     }
 
@@ -235,9 +239,10 @@ function animete(){
         })&& jogador.isAttacking && jogador.framesCurrent === 4
 
             ) {
+                inimigo.takeHit()
                 jogador.isAttacking=false
                // console.log('peguei')
-                inimigo.health -= 20
+                //inimigo.health -= 20
                 document.querySelector('#vidaInimigo').style.width= inimigo.health +'%'
             }
 
