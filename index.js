@@ -251,7 +251,10 @@ function animete(){
                 jogador.isAttacking=false
                // console.log('peguei')
                 //inimigo.health -= 20
-                document.querySelector('#vidaInimigo').style.width= inimigo.health +'%'
+                //document.querySelector('#vidaInimigo').style.width= inimigo.health +'%'
+                gsap.to('#vidaInimigo', {
+                    width: inimigo.health +'%'
+                })
             }
 
             //jogador errou ataque
@@ -269,7 +272,10 @@ function animete(){
             ) {
                 jogador.takeHit()
                 inimigo.isAttacking=false
-                document.querySelector('#vidaJogador').style.width= jogador.health +'%'
+                //document.querySelector('#vidaJogador').style.width= jogador.health +'%'
+                gsap.to('#vidaJogador', {
+                    width: jogador.health +'%'
+                })
                 
             }
             
