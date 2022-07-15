@@ -292,40 +292,44 @@ animete()
 // crinado eventos (função que "lê" o teclado quando preciona a tecla)
 window.addEventListener('keydown', (event) => {
     // botoes jogador
-    switch(event.key){
-        case 'd':// move para frente
-            keys.d.pressed = true
-            jogador.lastKey= 'd'
-        break
-        case 'a': //move para traz
-            keys.a.pressed = true
-            jogador.lastKey ='a'
-        break
-        case 'w': //pular 
-            jogador.velocity.y = -10
-        break
-        case ' ':
-            jogador.attack() 
-        break 
+    if(!jogador.dead){
+        switch(event.key){
+            case 'd':// move para frente
+                keys.d.pressed = true
+                jogador.lastKey= 'd'
+            break
+            case 'a': //move para traz
+                keys.a.pressed = true
+                jogador.lastKey ='a'
+            break
+            case 'w': //pular 
+                jogador.velocity.y = -10
+            break
+            case ' ':
+                jogador.attack() 
+            break 
     }
-    // botoes do inimigo 
-    switch(event.key){
-        case 'ArrowRight':// move para frente
-            keys.ArrowRight.pressed = true
-            inimigo.lastKey= 'ArrowRight'
-        break
-        case 'ArrowLeft': //move para traz
-            keys.ArrowLeft.pressed = true
-            inimigo.lastKey ='ArrowLeft'
-        break
-        case 'ArrowUp': //pular 
-            inimigo.velocity.y = -10
-        break
-        case 'ArrowDown': //ataque 
-            //inimigo.isAttacking = true
-            inimigo.attack() 
-        break
+}
+    // botoes do inimigo
+    if(!inimigo.dead){
+        switch(event.key){
+            case 'ArrowRight':// move para frente
+                keys.ArrowRight.pressed = true
+                inimigo.lastKey= 'ArrowRight'
+            break
+            case 'ArrowLeft': //move para traz
+                keys.ArrowLeft.pressed = true
+                inimigo.lastKey ='ArrowLeft'
+            break
+            case 'ArrowUp': //pular 
+                inimigo.velocity.y = -10
+            break
+            case 'ArrowDown': //ataque 
+                //inimigo.isAttacking = true
+                inimigo.attack() 
+            break
     }
+}
     //console.log(event.key)
 })
 // quando "solta" a tecla 
