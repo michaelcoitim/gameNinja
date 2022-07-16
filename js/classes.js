@@ -146,9 +146,11 @@ class Fighter extends Sprite{
         //FUNÇÃO GRAVIDADE 
         if(this.position.y + this.height +this.velocity.y >= canvas.height -31){
             this.velocity.y = 0
-            this.position.y =300
+            //this.position.y =259
         }else{
             this.velocity.y += gravity
+            
+            
         }
         
     }

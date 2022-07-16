@@ -190,8 +190,13 @@ function animete(){
     c.fillRect(0, 0, canvas.width , canvas.height)
     background.update()
     shop.update()
+    //c.fillStyle = 'rgba(255, 255, 255, 0.15)'
+   // c.fillRect(0, 0, canvas.width, canvas.height)
+
     jogador.update()
     inimigo.update()
+
+
 
     jogador.velocity.x=0
     inimigo.velocity.x =0
