@@ -177,11 +177,7 @@ class Fighter extends Sprite{
         }
     
         //  qndo realizar un ataque 
-        if (
-        this.image === this.sprites.attack1.image &&
-        this.framesCurrent < this.sprites.attack1.framesMax - 1
-        )
-        return 
+        if(this.image === this.sprites.attack1.image && this.framesCurrent < this.sprites.attack1.framesMax - 1) return 
     
         //  quando lutadores leva um golpe 
         if (
