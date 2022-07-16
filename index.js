@@ -68,7 +68,7 @@ const jogador = new Fighter({
             imageSrc:'./img/samuraiMack/Fall.png',
             framesMax:2
         },
-        Attack1:{
+        attack1:{
             imageSrc:'./img/samuraiMack/Attack1.png',
             framesMax:6
         },
@@ -131,7 +131,7 @@ const inimigo = new Fighter({
             imageSrc:'./img/kenji/Fall.png',
             framesMax:2
         },
-        Attack1:{
+        attack1:{
             imageSrc:'./img/kenji/Attack1.png',
             framesMax:4
         },

@@ -31,15 +31,14 @@ class Sprite {
 
     animeteFrames(){
         this.framesElapsed ++ 
-
         if(this.framesElapsed % this.framesHold === 0){
-            if(this.framesCurrent < this.framesMax -1){
+            if(this.framesCurrent < this.framesMax - 1){
                 this.framesCurrent ++
             } else{
                 this.framesCurrent = 0
             }
         }
-}
+    }
 
     //atualiza desenho 
     update(){
@@ -92,16 +91,16 @@ class Fighter extends Sprite{
         
         this.color= color
         this.isAttacking
-        this.health =100
-        this.framesCurrent =0
-        this.framesElapsed=0
-        this.framesHold =5
+        this.health = 100
+        this.framesCurrent = 0
+        this.framesElapsed = 0
+        this.framesHold = 5
         this.sprites = sprites
         this.dead= false
 
         for( const sprite in this.sprites){
             sprites[sprite].image = new Image()
-            sprites[sprite].imageSrc= sprites[sprite].imageSrc
+            sprites[sprite].image.src = sprites[sprite].imageSrc
 
         }
 
@@ -127,7 +126,9 @@ class Fighter extends Sprite{
     //atualiza desenho 
     update(){
         this.draw()
-        if(!this.dead) this.animeteFrames()
+        if(!this.dead){
+            this.animeteFrames()
+        }
 
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y
@@ -169,7 +170,7 @@ class Fighter extends Sprite{
 
     // imagens dos movimentos / tratativa de duplicidade 
     switchSprite(sprite) {
-        if(this.image === this.sprites.death){
+        if(this.image === this.sprites.death.image){
             if(this.framesCurrent === this.sprites.death.framesMax - 1){
                 this.dead=true
             }
@@ -177,7 +178,9 @@ class Fighter extends Sprite{
         }
     
         //  qndo realizar un ataque 
-        if(this.image === this.sprites.attack1.image && this.framesCurrent < this.sprites.attack1.framesMax - 1) return 
+        if(this.image === this.sprites.attack1.image &&
+            this.framesCurrent < this.sprites.attack1.framesMax - 1)
+            return 
     
         //  quando lutadores leva um golpe 
         if (
