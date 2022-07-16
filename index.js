@@ -111,7 +111,7 @@ const inimigo = new Fighter({
     imageSrc: './img/kenji/Idle.png',
     framesMax: 4,
     scale:2.5,
-    offset:{ x:215 , y:169},
+    offset:{ x:215 , y:168},
     sprites:{
         idle:{
             imageSrc:'./img/kenji/Idle.png',
